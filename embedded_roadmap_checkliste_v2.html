@@ -1,0 +1,1165 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Embedded Roadmap – Checkliste (erweiterte C & Embedded-Gliederung)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 1.5rem;
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      color: #e5e7eb;
+    }
+    a {
+      color: #38bdf8;
+    }
+    .card {
+      border: 1px solid #1f2937;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      background: #020617;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .checkbox-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .checkbox-title input[type="checkbox"] {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+    .section-id {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    ul {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    .interview-block {
+      margin-top: 0.75rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed #1f2937;
+    }
+    code {
+      background: #020617;
+      padding: 0.1rem 0.3rem;
+      border-radius: 0.25rem;
+      font-size: 0.9em;
+    }
+    .hint {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #1f2937;
+      padding: 0.4rem 0.6rem;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const boxes = document.querySelectorAll("input[type=checkbox][data-id]");
+      boxes.forEach(cb => {
+        const key = "embedded_roadmap_cb_v2_" + cb.dataset.id;
+        const stored = localStorage.getItem(key);
+        if (stored === "1") {
+          cb.checked = true;
+        }
+        cb.addEventListener("change", () => {
+          localStorage.setItem(key, cb.checked ? "1" : "0");
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Embedded Roadmap – Interview- & Lern-Checkliste (erweitert)</h1>
+  <p class="hint">
+    Öffne diese Datei im Browser. Für jeden Abschnitt kannst du einen Haken setzen, wenn du ihn abgearbeitet hast.
+    Dein Fortschritt wird lokal im Browser (localStorage) gespeichert.
+  </p>
+
+  <!-- 1. Grundlagen C & Modern Embedded C (ERWEITERT) -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="1-main">
+      <div>
+        <div class="section-id">Abschnitt 1</div>
+        <h2>🧱 1. Grundlagen C &amp; Modern Embedded C (erweitert)</h2>
+      </div>
+    </div>
+
+    <!-- 1.1 C Syntax & Sprachkonzepte -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-1">
+        <h3>1.1 C Syntax &amp; Sprachkonzepte</h3>
+      </div>
+      <ul>
+        <li>Variablen, Pointer, Arrays, Structs, Unions</li>
+        <li>Basis-Kontrollstrukturen: <code>if</code>, <code>switch</code>, <code>for</code>, <code>while</code></li>
+        <li>Speicherbereiche (<code>stack</code>, <code>heap</code>, <code>.data</code>, <code>.bss</code>)</li>
+        <li><code>volatile</code>, <code>static</code>, <code>const</code>, <code>inline</code></li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>C Programming Tutorial for Beginners</em> (freeCodeCamp, Komplettkurs) –
+          <a href="https://www.youtube.com/watch?v=KJgsSFOSQv0" target="_blank">https://www.youtube.com/watch?v=KJgsSFOSQv0</a></li>
+        <li><em>C Programming for Embedded Systems</em> – Playlist „Embedded For All“ –
+          <a href="https://www.youtube.com/playlist?list=PLzJTJ1FSIHJtWgO9mOxoS0EWRXvMgp0Fk" target="_blank">https://www.youtube.com/playlist?list=PLzJTJ1FSIHJtWgO9mOxoS0EWRXvMgp0Fk</a></li>
+      </ul>
+      <p><strong>🌐 Free Ressourcen:</strong></p>
+      <ul>
+        <li><a href="https://www.learn-c.org/" target="_blank">https://www.learn-c.org/</a> (Interaktive Übungen)</li>
+        <li><a href="https://beej.us/guide/bgc/" target="_blank">https://beej.us/guide/bgc/</a> (Guter Guide | Anfänger bis fortgeschritten)</li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.1</h4>
+        <ul>
+          <li>Was ist der Unterschied zwischen <code>stack</code>- und <code>heap</code>-Speicher? Wann verwendest du was in einem Embedded-System?</li>
+          <li>Erkläre den Unterschied zwischen <code>const</code> und <code>#define</code>. Wann nutzt du welches Konstrukt?</li>
+          <li>Wozu wird das Schlüsselwort <code>volatile</code> verwendet, und was kann passieren, wenn du es bei einem Hardware-Register weglässt?</li>
+          <li>Wie implementierst du eine <code>struct</code>, um mehrere Hardware-Register eines Peripherie-Moduls abzubilden?</li>
+          <li>Wie würdest du einem Junior den Unterschied zwischen einem Zeiger auf einen Wert und einem Zeiger auf einen Zeiger erklären?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.2 Build System & Debugging Workflow -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-2">
+        <h3>1.2 Build System &amp; Debugging Workflow</h3>
+      </div>
+      <ul>
+        <li><code>gcc</code>, <code>clang</code>, Cross-Compiler</li>
+        <li>Makefiles, <code>CMake</code>, Build-Typen (Debug/Release)</li>
+        <li><code>gdb</code>, <code>OpenOCD</code>, <code>JTAG/SWD</code>, Logging</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Makefiles Tutorial</em> –
+          <a href="https://www.youtube.com/watch?v=0E2WqBr9f-w" target="_blank">https://www.youtube.com/watch?v=0E2WqBr9f-w</a></li>
+        <li><em>CMake Crash Course</em> –
+          <a href="https://www.youtube.com/watch?v=nlKcXPUJGwA" target="_blank">https://www.youtube.com/watch?v=nlKcXPUJGwA</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.2</h4>
+        <ul>
+          <li>Wie sieht für dich ein typischer Build-Prozess für ein Embedded-Projekt aus (vom Code bis zum Flashen auf das Board)?</li>
+          <li>Was sind Vor- und Nachteile von Makefiles gegenüber CMake in Embedded-Projekten?</li>
+          <li>Wie gehst du vor, wenn ein Programm im Debugger immer an derselben Stelle abstürzt?</li>
+          <li>Welche Arten von Logs zeichnest du in einem Embedded-System auf (Log-Level, Speicherort, Ring-Buffer etc.)?</li>
+          <li>Wie nutzt du <code>gdb</code> oder einen anderen Debugger in Verbindung mit JTAG/SWD in deiner täglichen Arbeit?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.3 C Best Practices -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-3">
+        <h3>1.3 C Best Practices</h3>
+      </div>
+      <ul>
+        <li>Defensives Coding, Error Handling, Assertions (<code>assert.h</code>)</li>
+        <li>Logging-Bibliotheken und Log-Level</li>
+        <li>Memory Debugging, typische Fehler (UB, Dangling Pointer, Double Free)</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>C Best Practices</em> –
+          <a href="https://www.youtube.com/watch?v=1u2yP4YQxRo" target="_blank">https://www.youtube.com/watch?v=1u2yP4YQxRo</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.3</h4>
+        <ul>
+          <li>Wie strukturierst du Fehlercodes und Rückgabewerte in Embedded-C-Projekten?</li>
+          <li>Was sind typische Ursachen für Buffer Overflows und wie vermeidest du sie?</li>
+          <li>Wie würdest du Assertions in einem Release-Build behandeln?</li>
+          <li>Wie gehst du mit Speicherfragmentierung in Systemen ohne dynamische Speicherallokation (<code>malloc</code>) um?</li>
+          <li>Kannst du ein Beispiel aus deiner Praxis nennen, wo defensives Programmieren einen Fehler frühzeitig sichtbar gemacht hat?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.4 Zeiger & Speicher – Deep Dive (Embedded Fokus) -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-4">
+        <h3>1.4 Zeiger &amp; Speicher – Deep Dive (Embedded Fokus)</h3>
+      </div>
+      <ul>
+        <li>Pointer-Arithmetik, Arrays vs. Pointer</li>
+        <li>Pointer auf Funktionen (für Callbacks, Treiber-Tabellen)</li>
+        <li><code>const</code>-Korrektheit mit Zeigern (z.B. <code>const uint8_t *</code> vs. <code>uint8_t * const</code>)</li>
+        <li>Umgang mit <code>void*</code>, Casting und Aliasing</li>
+        <li>Memory Layout: Stack Frames, Heap, statische Daten</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Learn Pointers in C for Embedded Programming</em> –
+          <a href="https://www.youtube.com/watch?v=fykSH0HbVtw" target="_blank">https://www.youtube.com/watch?v=fykSH0HbVtw</a></li>
+        <li><em>Embedded Software: Pointers</em> –
+          <a href="https://www.youtube.com/watch?v=vD67Qo-ZoNA" target="_blank">https://www.youtube.com/watch?v=vD67Qo-ZoNA</a></li>
+        <li><em>C Programming and Memory Management – Full Course</em> –
+          <a href="https://www.youtube.com/watch?v=rJrd2QMVbGM" target="_blank">https://www.youtube.com/watch?v=rJrd2QMVbGM</a></li>
+      </ul>
+      <p><strong>🌐 Ressourcen:</strong></p>
+      <ul>
+        <li>Pointer-Playlist „Pointers in C“ –
+          <a href="https://www.youtube.com/playlist?list=PLRJhV4hUhIymdWRSwo3cZUlHetbmsSuzS" target="_blank">Playlist</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.4</h4>
+        <ul>
+          <li>Erkläre den Unterschied zwischen <code>uint8_t * const p</code> und <code>const uint8_t * p</code>.</li>
+          <li>Wie kannst du mit Funktionszeigern eine Treiber- oder Callback-Tabelle implementieren?</li>
+          <li>Was ist Pointer-Arithmetik und wo wird sie in Embedded-Projekten typischerweise genutzt?</li>
+          <li>Was sind typische Fehler bei der Verwendung von <code>void*</code> und Casts?</li>
+          <li>Wie kannst du mit Hilfe eines Debuggers die Stack-Frames eines Programms untersuchen?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.5 Modularisierung, Header-Design & mehrteilige Projekte -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-5">
+        <h3>1.5 Modularisierung, Header-Design &amp; mehrteilige C-Projekte</h3>
+      </div>
+      <ul>
+        <li>Trennung von Deklaration und Definition (<code>.h</code> vs. <code>.c</code>)</li>
+        <li>Include-Guards, Forward Declarations</li>
+        <li>Modul-Schnittstellen sauber designen (APIs, Treiber-Header)</li>
+        <li>Statische Funktionen und Sichtbarkeitsregeln (<code>static</code> in <code>.c</code>)</li>
+        <li>Bibliotheken und Wiederverwendung von Code</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>C "Modules" – Header Files, Include Guards, .o Files</em> –
+          <a href="https://www.youtube.com/watch?v=8KyZedtkEhk" target="_blank">https://www.youtube.com/watch?v=8KyZedtkEhk</a></li>
+        <li><em>Mastering Modular Programming in C | Header Files</em> –
+          <a href="https://www.youtube.com/watch?v=qknSHg56KDM" target="_blank">https://www.youtube.com/watch?v=qknSHg56KDM</a></li>
+        <li><em>Writing &amp; Compiling Multi-file C Programs</em> –
+          <a href="https://www.youtube.com/watch?v=lARP1419SsI" target="_blank">https://www.youtube.com/watch?v=lARP1419SsI</a></li>
+        <li><em>C Programming: Functions, Header Files, and How Programs Fit Together</em> –
+          <a href="https://www.youtube.com/watch?v=JXRfHS3sV5w" target="_blank">https://www.youtube.com/watch?v=JXRfHS3sV5w</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><em>Header Files in C – Simple Guide with Examples</em> –
+          <a href="https://iies.in/blog/c-header-files-examples/" target="_blank">https://iies.in/blog/c-header-files-examples/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.5</h4>
+        <ul>
+          <li>Wie strukturierst du ein größeres Embedded-Projekt in einzelne Module?</li>
+          <li>Was gehört in eine Header-Datei und was gehört NICHT in eine Header-Datei?</li>
+          <li>Warum sind Include-Guards wichtig und wie sehen sie aus?</li>
+          <li>Wie würdest du eine Hardware-Abstraktionsschicht (HAL) mit eigenen Headern aufbauen?</li>
+          <li>Wie gehst du mit zirkulären Abhängigkeiten zwischen Header-Dateien um?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.6 Datenstrukturen & Algorithmen in C (embedded-relevant) -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-6">
+        <h3>1.6 Datenstrukturen &amp; Algorithmen in C (embedded-relevant)</h3>
+      </div>
+      <ul>
+        <li>Arrays, Ringbuffer, verkettete Listen</li>
+        <li>Queues, Stacks für Task- oder Message-Verwaltung</li>
+        <li>Lookup-Tabellen, Zustandsautomaten (als Datenstruktur)</li>
+        <li>Komplexität grob einschätzen (Laufzeit, Speicherbedarf)</li>
+      </ul>
+      <p><strong>🎥 Tutorials / Playlists:</strong></p>
+      <ul>
+        <li><em>Data Structures in Embedded Systems</em> –
+          <a href="https://www.youtube.com/playlist?list=PLFt5JBAXXlQrxaTZ0A6pcZ89j8f41Pvn4" target="_blank">https://www.youtube.com/playlist?list=PLFt5JBAXXlQrxaTZ0A6pcZ89j8f41Pvn4</a></li>
+        <li><em>DATA STRUCTURES IN C PROGRAMMING | EMBEDDED</em> –
+          <a href="https://www.youtube.com/watch?v=BWFdG6r0wBI" target="_blank">https://www.youtube.com/watch?v=BWFdG6r0wBI</a></li>
+        <li><em>Embedded C Data structure – A practical approach</em> –
+          <a href="https://www.youtube.com/watch?v=t8oxLB-aStE" target="_blank">https://www.youtube.com/watch?v=t8oxLB-aStE</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.6</h4>
+        <ul>
+          <li>Wie würdest du einen Ringbuffer für UART-Rx implementieren?</li>
+          <li>Wann ist eine verkettete Liste sinnvoll und wann reicht ein Array?</li>
+          <li>Wie würdest du eine Prioritäten-Warteschlange (Priority Queue) für Tasks oder Nachrichten modellieren?</li>
+          <li>Wie gehst du in Embedded-Systemen mit dynamischer Speicherallokation vs. statischen Datenstrukturen um?</li>
+          <li>Wie kann ein Zustandsautomat als Datenstruktur (z.B. Tabelle) abgebildet werden?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.7 MISRA-C & Safety-Oriented Coding -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="1-7">
+        <h3>1.7 MISRA-C &amp; Safety-Oriented Coding</h3>
+      </div>
+      <ul>
+        <li>Ziel von MISRA-C: sichere Nutzung von C in sicherheitskritischen Systemen</li>
+        <li>Typische Regelkategorien: Typkonversionen, Pointer, Kontrolle, Seiteneffekte</li>
+        <li>Statische Analyse-Tools und Code-Reviews</li>
+      </ul>
+      <p><strong>🎥 Tutorials / Talks:</strong></p>
+      <ul>
+        <li><em>MISRA C 2023 – What You Need to Know</em> –
+          <a href="https://www.youtube.com/watch?v=R5gUzPYYs1s" target="_blank">https://www.youtube.com/watch?v=R5gUzPYYs1s</a></li>
+        <li><em>How to make code reliable and secure – The MISRA standard</em> –
+          <a href="https://www.youtube.com/watch?v=01tEjvICh4k" target="_blank">https://www.youtube.com/watch?v=01tEjvICh4k</a></li>
+        <li><em>MISRA C: The Power of C Without the Pitfalls</em> –
+          <a href="https://www.youtube.com/watch?v=zTiLt0TVB-M" target="_blank">https://www.youtube.com/watch?v=zTiLt0TVB-M</a></li>
+        <li><em>What is MISRA C? A Simple Intro + Practical Coding Example</em> –
+          <a href="https://www.youtube.com/watch?v=uIMCZrknj9M" target="_blank">https://www.youtube.com/watch?v=uIMCZrknj9M</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 1.7</h4>
+        <ul>
+          <li>Was ist MISRA-C und in welchen Branchen wird es typischerweise angewendet?</li>
+          <li>Kannst du Beispiele für MISRA-Regeln nennen, die du sinnvoll findest?</li>
+          <li>Wie gehst du mit Regelverletzungen um, die in deinem Projekt „bewusst akzeptiert“ werden müssen?</li>
+          <li>Welche Rolle spielen statische Analyse-Tools in deinem Workflow?</li>
+          <li>Wie erklärst du einem Kollegen, der „C so schnell wie möglich“ schreiben will, warum MISRA trotzdem wichtig ist?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Mikrocontroller Architektur, Register & Memory (erweitert) -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="2-main">
+      <div>
+        <div class="section-id">Abschnitt 2</div>
+        <h2>⚙️ 2. Mikrocontroller Architektur, Register &amp; Memory (erweitert)</h2>
+      </div>
+    </div>
+
+    <!-- 2.1 MCU vs MPU verstehen -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="2-1">
+        <h3>2.1 MCU vs MPU verstehen</h3>
+      </div>
+      <ul>
+        <li>Aufbau eines Mikrocontrollers (CPU, Flash, RAM, Peripherie)</li>
+        <li>Interrupt Controller (NVIC), Timers, DMA, Watchdog, Bootloader</li>
+        <li>Endianness, Bit-Masking, Memory-Alignment</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Microcontrollers vs Microprocessors</em> –
+          <a href="https://www.youtube.com/watch?v=VtXJRE6Yd8g" target="_blank">https://www.youtube.com/watch?v=VtXJRE6Yd8g</a></li>
+        <li><em>How does DMA work?</em> –
+          <a href="https://www.youtube.com/watch?v=F3lZ3pQ9C5A" target="_blank">https://www.youtube.com/watch?v=F3lZ3pQ9C5A</a></li>
+      </ul>
+      <p><strong>🌐 Ressourcen:</strong></p>
+      <ul>
+        <li><a href="https://www.embedded.com/introduction-to-microcontrollers/" target="_blank">https://www.embedded.com/introduction-to-microcontrollers/</a></li>
+        <li><a href="https://inst.eecs.berkeley.edu/~cs61c/" target="_blank">https://inst.eecs.berkeley.edu/~cs61c/</a> (Processor Design Uni-Kurs)</li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 2.1</h4>
+        <ul>
+          <li>Was ist der Unterschied zwischen einem Mikrocontroller und einem Mikroprozessor, und wann würdest du welches einsetzen?</li>
+          <li>Was ist ein Watchdog-Timer und wie setzt du ihn sinnvoll in einem Embedded-System ein?</li>
+          <li>Erkläre, wie DMA (Direct Memory Access) funktioniert und warum es die CPU entlasten kann.</li>
+          <li>Was bedeutet Endianness und warum ist das beim Datenaustausch zwischen verschiedenen Systemen wichtig?</li>
+          <li>Wie würdest du die Boot-Sequenz eines typischen Embedded-Systems beschreiben?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2.2 Register Manipulation & Bit Operations -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="2-2">
+        <h3>2.2 Register Manipulation &amp; Bit Operations</h3>
+      </div>
+      <ul>
+        <li>Bit-Shifting, Masking, Flags</li>
+        <li>Register-Map aus Datenblatt verstehen</li>
+        <li>Peripherie direkt im Register steuern</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Bit Manipulation in C</em> –
+          <a href="https://www.youtube.com/watch?v=qq64FrA2UXQ" target="_blank">https://www.youtube.com/watch?v=qq64FrA2UXQ</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 2.2</h4>
+        <ul>
+          <li>Wie setzt, löscht und toggelst du einzelne Bits in einem Register in C?</li>
+          <li>Wie würdest du <code>#define</code>-Makros für Bitmasken in einem Register-Header organisieren?</li>
+          <li>Warum ist es wichtig, bei Registerzugriffen oft <code>volatile</code> zu verwenden?</li>
+          <li>Wie gehst du vor, wenn mehrere Tasks im RTOS auf dasselbe Hardware-Register zugreifen müssen?</li>
+          <li>Kannst du eine typische <code>GPIO</code>-Initialisierung für einen Output-Pin auf Registerebene beschreiben?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2.3 Startup Code, Linker-Skripte & Memory Layout -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="2-3">
+        <h3>2.3 Startup Code, Linker-Skripte &amp; Memory Layout</h3>
+      </div>
+      <ul>
+        <li>Rolle von Startup-Code: Reset-Handler, Initialisierung von <code>.data</code> und <code>.bss</code></li>
+        <li>Vektortabelle, Interrupt-Vektoren</li>
+        <li>Grundlagen von Linker-Skripten: Sections, Memory-Regionen</li>
+        <li>MAP-File lesen und Speicherverbrauch analysieren</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Bare metal embedded – Writing linker scripts</em> –
+          <a href="https://www.youtube.com/watch?v=B7oKdUvRhQQ" target="_blank">https://www.youtube.com/watch?v=B7oKdUvRhQQ</a></li>
+        <li><em>Embedded Systems – How to write linker script file from scratch</em> –
+          <a href="https://www.youtube.com/watch?v=95-FS4lCx2I" target="_blank">https://www.youtube.com/watch?v=95-FS4lCx2I</a></li>
+        <li><em>Startup Code &amp; Vector Table (Bare Metal)</em> –
+          <a href="https://www.youtube.com/watch?v=2Hm8eEHsgls" target="_blank">https://www.youtube.com/watch?v=2Hm8eEHsgls</a></li>
+        <li><em>What Are Linker Scripts For Embedded C Custom Hardware?</em> –
+          <a href="https://www.youtube.com/watch?v=hlxLX5m5oV4" target="_blank">https://www.youtube.com/watch?v=hlxLX5m5oV4</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><em>Bare metal programming guide</em> –
+          <a href="https://github.com/cpq/bare-metal-programming-guide" target="_blank">https://github.com/cpq/bare-metal-programming-guide</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 2.3</h4>
+        <ul>
+          <li>Was passiert in einem typischen Embedded-System, bevor <code>main()</code> aufgerufen wird?</li>
+          <li>Wie sieht eine einfache Vektortabelle aus und wie wird sie im Speicher platziert?</li>
+          <li>Was ist ein Linker-Skript und welche Probleme löst es im Embedded-Kontext?</li>
+          <li>Wie würdest du herausfinden, warum dein Programm plötzlich im Flash „zu groß“ wird?</li>
+          <li>Wie kannst du kritische Daten in einer besonderen Speicherregion (z.B. Retention RAM) ablegen?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2.4 Bare-Metal Blink, Interrupts & einfache Treiber -->
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="2-4">
+        <h3>2.4 Bare-Metal Blink, Interrupts &amp; einfache Treiber</h3>
+      </div>
+      <ul>
+        <li>Blink-LED ohne HAL/Framework (nur Register)</li>
+        <li>Einrichtung eines Timers + Interrupt zur periodischen LED-Steuerung</li>
+        <li>Einfache GPIO-Treiber-Funktion schreiben (Init, Set, Clear, Toggle)</li>
+        <li>Interrupt-Service-Routinen (ISR) schreiben und registrieren</li>
+      </ul>
+      <p><strong>🎥 Tutorials / Playlists:</strong></p>
+      <ul>
+        <li><em>Bare Metal Embedded Programming: Theory and Practice</em> –
+          <a href="https://www.youtube.com/playlist?list=PL4cGeWgaBTe155QQSQ72DksLIjBn5Jn2Z" target="_blank">https://www.youtube.com/playlist?list=PL4cGeWgaBTe155QQSQ72DksLIjBn5Jn2Z</a></li>
+        <li><em>STM32 Bare Metal – Startup code &amp; vector table</em> –
+          <a href="https://www.youtube.com/watch?v=7stymN3eYw0" target="_blank">https://www.youtube.com/watch?v=7stymN3eYw0</a></li>
+        <li><em>STM32 Firmware Development – Boot Process &amp; Vector Table</em> –
+          <a href="https://www.youtube.com/watch?v=rill7TLbdG4" target="_blank">https://www.youtube.com/watch?v=rill7TLbdG4</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 2.4</h4>
+        <ul>
+          <li>Wie würdest du eine LED komplett ohne HAL-Funktionen zum Blinken bringen?</li>
+          <li>Wie richtest du einen Timer-Interrupt ein, der alle 1 ms ausgelöst wird?</li>
+          <li>Welche Regeln gelten für Code in einer Interrupt-Service-Routine (ISR)?</li>
+          <li>Wie würdest du einen einfachen GPIO-Treiber so strukturieren, dass er auf verschiedene Pins/Ports wiederverwendbar ist?</li>
+          <li>Wie verhält sich dein System, wenn innerhalb einer ISR sehr viel Arbeit erledigt wird?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Hardware & Schaltplan lesen -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="3-main">
+      <div>
+        <div class="section-id">Abschnitt 3</div>
+        <h2>📡 3. Hardware &amp; Schaltplan lesen</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="3-1">
+        <h3>3.1 Elektronik-Basics</h3>
+      </div>
+      <ul>
+        <li>Pull-Up / Pull-Down, MOSFETs, Relais, UART, RS-485, I²C, SPI</li>
+        <li>Spannungsteiler, ADC-Scaling</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Schaltplan lesen lernen</em> –
+          <a href="https://www.youtube.com/watch?v=l2f3qY7x2jQ" target="_blank">https://www.youtube.com/watch?v=l2f3qY7x2jQ</a></li>
+        <li><em>Voltage Divider explained</em> –
+          <a href="https://www.youtube.com/watch?v=ZLWdBBf2b9c" target="_blank">https://www.youtube.com/watch?v=ZLWdBBf2b9c</a></li>
+        <li><em>MOSFET explained</em> –
+          <a href="https://www.youtube.com/watch?v=GrvvkYTW_0kE" target="_blank">https://www.youtube.com/watch?v=GrvvkYTW_0kE</a></li>
+      </ul>
+      <p><strong>🌐 Ressourcen:</strong></p>
+      <ul>
+        <li><a href="https://www.circuitbasics.com/voltage-divider/" target="_blank">https://www.circuitbasics.com/voltage-divider/</a></li>
+        <li><a href="https://www.electronics-tutorials.ws/" target="_blank">https://www.electronics-tutorials.ws/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 3.1</h4>
+        <ul>
+          <li>Wie funktioniert ein Spannungsteiler und wie würdest du einen ADC-Eingang von 0–5 V auf 0–3,3 V skalieren?</li>
+          <li>Was ist der Unterschied zwischen Pull-Up- und Pull-Down-Widerständen und wann setzt du welchen ein?</li>
+          <li>Wie würdest du ein Relais von einem Mikrocontroller-Pin aus ansteuern (inkl. Schutzbeschaltung)?</li>
+          <li>Was sind typische Fehlerquellen bei RS-485-Bussen in industriellen Umgebungen?</li>
+          <li>Wie unterscheidet sich ein MOSFET von einem BJT und warum sind MOSFETs in Embedded-Leistungsstufen oft bevorzugt?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="3-2">
+        <h3>3.2 Messtechnik</h3>
+      </div>
+      <ul>
+        <li>Multimeter Basics</li>
+        <li>Logikanalyse &amp; Oszilloskop Intro</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Oszilloskop Crashkurs</em> –
+          <a href="https://www.youtube.com/watch?v=u4zyptPLlJI" target="_blank">https://www.youtube.com/watch?v=u4zyptPLlJI</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 3.2</h4>
+        <ul>
+          <li>Wie würdest du ein PWM-Signal mit einem Oszilloskop analysieren?</li>
+          <li>Wie gehst du vor, wenn ein serielles Signal scheinbar „Müll“ enthält? Welche Messgeräte nutzt du?</li>
+          <li>Wie kannst du mit einem Logik-Analyzer ein Protokoll wie I²C oder SPI debuggen?</li>
+          <li>Welche Sicherheitsaspekte sind beim Messen an Netzspannung oder großen Motoren zu beachten?</li>
+          <li>Wie erkennst du Störungen oder Ground-Bounce-Probleme in einem Schaltplan bzw. Layout?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Echtzeit-Systeme & FreeRTOS -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="4-main">
+      <div>
+        <div class="section-id">Abschnitt 4</div>
+        <h2>⏱️ 4. Echtzeit-Systeme &amp; FreeRTOS</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="4-1">
+        <h3>4.1 RTOS Konzepte</h3>
+      </div>
+      <ul>
+        <li>Tasks, Scheduler, Queues, Semaphores, Mutex, Deadlocks, Race Conditions</li>
+        <li>Inter-Process Communication (IPC)</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>FreeRTOS for Beginners</em> –
+          <a href="https://www.youtube.com/watch?v=JIr7Xm_riRs" target="_blank">https://www.youtube.com/watch?v=JIr7Xm_riRs</a></li>
+        <li><em>FreeRTOS Basics: Tasks</em> –
+          <a href="https://www.youtube.com/watch?v=F321087yYy4" target="_blank">https://www.youtube.com/watch?v=F321087yYy4</a></li>
+        <li><em>Mutexes in FreeRTOS</em> –
+          <a href="https://www.youtube.com/watch?v=I55auRpbiTs" target="_blank">https://www.youtube.com/watch?v=I55auRpbiTs</a></li>
+        <li><em>Queues in FreeRTOS</em> –
+          <a href="https://www.youtube.com/watch?v=pHJ3lxOoWeI" target="_blank">https://www.youtube.com/watch?v=pHJ3lxOoWeI</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://www.freertos.org/Documentation/RTOS_book.html" target="_blank">https://www.freertos.org/Documentation/RTOS_book.html</a> (Offizielles Buch – kostenlos als PDF)</li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 4.1</h4>
+        <ul>
+          <li>Was ist ein RTOS und wie unterscheidet es sich von einem allgemeinen Betriebssystem?</li>
+          <li>Wann entscheidest du dich dafür, einen neuen Task zu erstellen, statt eine Funktion einfach zu callen?</li>
+          <li>Was ist Priority Inversion und wie kann man sie vermeiden oder mitigieren?</li>
+          <li>Wie würdest du eine Producer-Consumer-Architektur mit Queues in FreeRTOS umsetzen?</li>
+          <li>Was sind typische Ursachen für Deadlocks in einem RTOS-System?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="4-2">
+        <h3>4.2 Praktische RTOS-Tasks implementieren (ESP32)</h3>
+      </div>
+      <ul>
+        <li>3–4 Tasks gleichzeitig laufen lassen</li>
+        <li>Synchronisation zwischen ihnen aufbauen</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>ESP32 FreeRTOS Tutorial</em> –
+          <a href="https://www.youtube.com/watch?v=Z8F6F8q2wM8" target="_blank">https://www.youtube.com/watch?v=Z8F6F8q2wM8</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 4.2</h4>
+        <ul>
+          <li>Wie würdest du eine Aufgabe mit harter Echtzeitanforderung von Hintergrund-Tasks im System abgrenzen?</li>
+          <li>Wie entscheidet man über Task-Prioritäten in einem System mit mehreren gleichzeitigen Anforderungen?</li>
+          <li>Wie würdest du Task-Stackgrößen bestimmen und überwachen?</li>
+          <li>Was sind typische Performance-Fallen bei zu vielen Tasks in einem RTOS?</li>
+          <li>Wie debuggst du Race Conditions in einem FreeRTOS-System?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Serielle Kommunikation & Networking -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="5-main">
+      <div>
+        <div class="section-id">Abschnitt 5</div>
+        <h2>🌐 5. Serielle Kommunikation &amp; Networking</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="5-1">
+        <h3>5.1 UART, RS-485 &amp; I²C/SPI</h3>
+      </div>
+      <ul>
+        <li>Protokolle verstehen</li>
+        <li>Frame-Aufbau</li>
+        <li>CRC, Checksum, Bus-Monitoring</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>UART explained</em> –
+          <a href="https://www.youtube.com/watch?v=sTHckUyxwp8" target="_blank">https://www.youtube.com/watch?v=sTHckUyxwp8</a></li>
+        <li><em>RS-485 explained</em> –
+          <a href="https://www.youtube.com/watch?v=3wgKcUDlHuM" target="_blank">https://www.youtube.com/watch?v=3wgKcUDlHuM</a></li>
+        <li><em>I²C explained</em> –
+          <a href="https://www.youtube.com/watch?v=6IAkYpmA1DQ" target="_blank">https://www.youtube.com/watch?v=6IAkYpmA1DQ</a></li>
+        <li><em>SPI explained</em> –
+          <a href="https://www.youtube.com/watch?v=MCi7dCBhVpQ" target="_blank">https://www.youtube.com/watch?v=MCi7dCBhVpQ</a></li>
+      </ul>
+      <p><strong>🌐 Ressourcen:</strong></p>
+      <ul>
+        <li><a href="https://www.gammon.com.au/spi" target="_blank">https://www.gammon.com.au/spi</a></li>
+        <li><a href="https://www.i2c-bus.org/" target="_blank">https://www.i2c-bus.org/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 5.1</h4>
+        <ul>
+          <li>Was sind die wichtigsten Unterschiede zwischen I²C und SPI?</li>
+          <li>Wie stellst du sicher, dass ein RS-485-Bus robust gegenüber Störungen in einer Industrieumgebung ist?</li>
+          <li>Wie würdest du ein eigenes, einfaches Protokoll (Header, Payload, CRC) über UART entwerfen?</li>
+          <li>Was ist der Unterschied zwischen Parität, Stopbits und Baudrate und wie beeinflussen sie die Kommunikation?</li>
+          <li>Wie gehst du vor, wenn ein Slave am I²C-Bus nicht antwortet oder die Leitung „festhält“?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="5-2">
+        <h3>5.2 Networking Basics (lokales Netz, TCP/UDP, mDNS)</h3>
+      </div>
+      <ul>
+        <li>Geräte im Netzwerk finden</li>
+        <li>API Calls, WebSockets, Device-Discovery</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>mDNS &amp; ESP32 in network discovery</em> –
+          <a href="https://www.youtube.com/watch?v=YVgHkFQjI5Q" target="_blank">https://www.youtube.com/watch?v=YVgHkFQjI5Q</a></li>
+        <li><em>TCP/UDP explained</em> –
+          <a href="https://www.youtube.com/watch?v=Vdc8TCESIg8" target="_blank">https://www.youtube.com/watch?v=Vdc8TCESIg8</a></li>
+      </ul>
+      <p><strong>🌐 Ressourcen:</strong></p>
+      <ul>
+        <li><a href="https://randomnerdtutorials.com/esp32-mdns-arduino/" target="_blank">https://randomnerdtutorials.com/esp32-mdns-arduino/</a></li>
+        <li><a href="https://handsonnetworking.org/" target="_blank">https://handsonnetworking.org/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 5.2</h4>
+        <ul>
+          <li>Was sind die Unterschiede zwischen TCP und UDP, und wann würdest du welches Protokoll verwenden?</li>
+          <li>Wie kann mDNS bei der Gerätesuche im lokalen Netzwerk helfen?</li>
+          <li>Wie würdest du ein einfaches REST-API-Client-Modul in einem Embedded-Gerät strukturieren?</li>
+          <li>Welche Herausforderungen gibt es bei Firmware-Updates über das Netzwerk (OTA)?</li>
+          <li>Wie würdest du Timeouts und Wiederholungsversuche (Retries) bei Netzwerkkommunikation handhaben?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Tooling-Mastery (Industrie Standard) -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="6-main">
+      <div>
+        <div class="section-id">Abschnitt 6</div>
+        <h2>🧰 6. Tooling-Mastery (Industrie Standard)</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="6-1">
+        <h3>6.1 VS Code Embedded Setup</h3>
+      </div>
+      <ul>
+        <li><code>ESP-IDF Extension</code></li>
+        <li><code>CMake Tools</code></li>
+        <li><code>OpenOCD</code></li>
+        <li>Serial Monitor, Log-Parsing</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Setup ESP-IDF in VS Code</em> –
+          <a href="https://www.youtube.com/watch?v=Lc6ausiKvQM" target="_blank">https://www.youtube.com/watch?v=Lc6ausiKvQM</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 6.1</h4>
+        <ul>
+          <li>Mit welchen IDEs und Toolchains hast du bisher Embedded-Projekte umgesetzt?</li>
+          <li>Wie richtest du ein neues ESP-IDF-Projekt in VS Code ein?</li>
+          <li>Wie gehst du vor, wenn das Flashen des Programms plötzlich fehlschlägt (z.B. Serial-Port-Probleme)?</li>
+          <li>Welche Compiler-Warnungen behandelst du als „Fehler“ und warum?</li>
+          <li>Wie nutzt du Build-Konfigurationen (Debug/Release) in deinem täglichen Workflow?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="6-2">
+        <h3>6.2 Debugger anschließen (JTAG, SWD)</h3>
+      </div>
+      <ul>
+        <li>Breakpoints</li>
+        <li>Memory Inspection</li>
+        <li>Stack Trace</li>
+        <li>Fault-Analysis</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>ESP32 JTAG Debugging Guide</em> –
+          <a href="https://www.youtube.com/watch?v=psMqilqlrRQ" target="_blank">https://www.youtube.com/watch?v=psMqilqlrRQ</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 6.2</h4>
+        <ul>
+          <li>Wie setzt du Hardware-Breakpoints in einem Embedded-Debugging-Szenario ein?</li>
+          <li>Wie würdest du einen Hard Fault oder Guru Meditation auf einem MCU/ESP32 untersuchen?</li>
+          <li>Wie analysierst du Stack-Overflows oder Speicherlecks?</li>
+          <li>Wie kannst du mit einem Debugger festhängende Interrupts oder Endlosschleifen identifizieren?</li>
+          <li>Hattest du schon einmal ein Problem, das sich nur mit einem Debugger lösen ließ? Beschreibe es.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Embedded Linux & Yocto -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="7-main">
+      <div>
+        <div class="section-id">Abschnitt 7</div>
+        <h2>🐧 7. Embedded Linux &amp; Yocto</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="7-1">
+        <h3>7.1 Linux für Embedded</h3>
+      </div>
+      <ul>
+        <li>Services, Device-Tree, Kernel-Modules</li>
+        <li>File System, Drivers</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Embedded Linux Introduction</em> –
+          <a href="https://www.youtube.com/watch?v=EEv0tP5E-ww" target="_blank">https://www.youtube.com/watch?v=EEv0tP5E-ww</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://embetronicx.com/tutorials/linux/device-tree/" target="_blank">https://embetronicx.com/tutorials/linux/device-tree/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 7.1</h4>
+        <ul>
+          <li>Wann würdest du ein RTOS und wann ein Embedded Linux verwenden?</li>
+          <li>Was ist ein Device Tree und warum ist er wichtig?</li>
+          <li>Wie funktioniert das Treiber-Modell unter Linux grob (User Space vs Kernel Space)?</li>
+          <li>Wie würdest du ein neues Hardware-Gerät in ein bestehendes Embedded-Linux-System integrieren?</li>
+          <li>Welche Tools nutzt du, um auf einem Embedded-Linux-System zu debuggen (z.B. <code>dmesg</code>, <code>strace</code>, <code>top</code>)?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="7-2">
+        <h3>7.2 Yocto Basics</h3>
+      </div>
+      <ul>
+        <li>Images bauen</li>
+        <li>Layers</li>
+        <li>Recipes</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Yocto Project Tutorial for Beginners</em> –
+          <a href="https://www.youtube.com/watch?v=9vsu67uMcko" target="_blank">https://www.youtube.com/watch?v=9vsu67uMcko</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html" target="_blank">https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 7.2</h4>
+        <ul>
+          <li>Was ist das Yocto-Projekt und warum wird es in Embedded-Projekten verwendet?</li>
+          <li>Wie ist ein Yocto-Layer aufgebaut und wofür wird er verwendet?</li>
+          <li>Wie würdest du ein zusätzliches Paket (z.B. ein eigenes Tool) in ein Yocto-Image integrieren?</li>
+          <li>Welche Vor- und Nachteile hat Yocto im Vergleich zu vorgefertigten Distributionen (z.B. Debian)?</li>
+          <li>Welche typischen Probleme können beim Bauen von Yocto-Images auftreten?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Industriestandard Testing & Code Qualität -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="8-main">
+      <div>
+        <div class="section-id">Abschnitt 8</div>
+        <h2>🧪 8. Industriestandard Testing &amp; Code Qualität</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="8-1">
+        <h3>8.1 Unit Testing in C (Embedded Style)</h3>
+      </div>
+      <ul>
+        <li><code>Unity Test Framework</code></li>
+        <li>Test Cases für Relays, Bus-Frames, ADC-Werte</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Unity Test Framework in C</em> –
+          <a href="https://www.youtube.com/watch?v=SiEPwO8l0Gg" target="_blank">https://www.youtube.com/watch?v=SiEPwO8l0Gg</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://github.com/ThrowTheSwitch/Unity" target="_blank">https://github.com/ThrowTheSwitch/Unity</a> (kostenlos, industry-standard)</li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 8.1</h4>
+        <ul>
+          <li>Wie würdest du in einem Embedded-Projekt Unit Tests strukturieren, obwohl die Hardware nicht immer verfügbar ist?</li>
+          <li>Wie gehst du mit Hardware-Abhängigkeiten beim Testen um (Stichwort: Mocks, Stubs)?</li>
+          <li>Welche Teile deines Codes testest du bevorzugt automatisch und warum?</li>
+          <li>Wie integrierst du Tests in einen CI-Workflow?</li>
+          <li>Was sind die Grenzen von Unit Tests in Embedded-Systemen?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="8-2">
+        <h3>8.2 Clean Embedded Code</h3>
+      </div>
+      <ul>
+        <li>Folder Structure (Components)</li>
+        <li>Driver Isolation</li>
+        <li>Hardware Abstraction Layer (HAL)</li>
+        <li>Repository Pattern nur wenn sinnvoll</li>
+        <li>Error Codes vs Exceptions verstehen</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Clean Code Concepts for Embedded</em> –
+          <a href="https://www.youtube.com/watch?v=lj6nVb6O4kE" target="_blank">https://www.youtube.com/watch?v=lj6nVb6O4kE</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu 8.2</h4>
+        <ul>
+          <li>Wie strukturierst du typischerweise ein Embedded-Projekt (Ordner, Layer, Komponenten)?</li>
+          <li>Was ist für dich eine gute Trennung zwischen Applikationslogik und Treibern?</li>
+          <li>Wie gehst du mit Fehlercodes in einer größeren Codebasis um, damit sie trotzdem verständlich bleiben?</li>
+          <li>Wie stellst du sicher, dass dein Code langfristig wartbar für andere Entwickler bleibt?</li>
+          <li>Welche Coding-Guidelines (z.B. MISRA-C) kennst oder nutzt du?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Portfolio-Interview-Projekte -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="9-main">
+      <div>
+        <div class="section-id">Abschnitt 9</div>
+        <h2>🚀 9. Portfolio-Interview-Projekte, die du bauen wirst</h2>
+      </div>
+    </div>
+
+    <p>Du solltest bis Ende diese App-Projekte können:</p>
+    <table>
+      <tr>
+        <th>Projekt</th>
+        <th>Fähigkeiten</th>
+      </tr>
+      <tr>
+        <td>✅ <em>Relay + ADC Board Monitor</em></td>
+        <td>GPIO, Timers, ADC Scaling</td>
+      </tr>
+      <tr>
+        <td>✅ <em>RS-485 Bus Sniffer + CRC Validate</em></td>
+        <td>Frame Parsing, Bit Coding</td>
+      </tr>
+      <tr>
+        <td>✅ <em>Network Device Scanner (mDNS / TCP / UDP)</em></td>
+        <td>ESP32 Geräte finden</td>
+      </tr>
+      <tr>
+        <td>✅ <em>FreeRTOS Task System mit IPC</em></td>
+        <td>Mutex, Queue, Deadlock Free</td>
+      </tr>
+      <tr>
+        <td>✅ <em>Mini Bootloader Konzept mit Flash Write</em></td>
+        <td>Memory Handling</td>
+      </tr>
+    </table>
+
+    <div class="interview-block">
+      <h4>Potentielle Interviewfragen zu 9 (Portfolio)</h4>
+      <ul>
+        <li>Beschreibe dein Lieblingsprojekt im Embedded-Bereich. Welche Herausforderungen gab es und wie hast du sie gelöst?</li>
+        <li>Hast du schon einmal mit einem RS-485- oder ähnlichen Bus gearbeitet? Wie hast du Protokoll und Fehlerbehandlung umgesetzt?</li>
+        <li>Wie würdest du einem Nicht-Techniker die Architektur eines deiner Projekte erklären?</li>
+        <li>Gab es ein Projekt, bei dem du bewusst Kompromisse zwischen Code-Qualität, Performance und Zeitdruck eingehen musstest?</li>
+        <li>Wie gehst du vor, wenn du eine bestehende Codebasis übernehmen und erweitern musst?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Exkursionen -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="ex-main">
+      <div>
+        <div class="section-id">Exkursionen</div>
+        <h2>💡 Exkursionen (Themen, die oft nur angerissen werden)</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="ex-1">
+        <h3>📌 Exkursion 1 – Elektrische Tür-Drives &amp; Embedded Steuergeräte</h3>
+      </div>
+      <p>
+        MCU steuert Relais → Relais steuert Motor → Sensorik über I²C/Serial → Terminal bekommt State.
+        Asynchrone Bus-Kommunikation. Mode Handling state-machine style.
+      </p>
+      <p><strong>Tutorials:</strong></p>
+      <ul>
+        <li><em>State Machines in Embedded Systems</em> –
+          <a href="https://www.youtube.com/watch?v=N7jV-jQ3QWc" target="_blank">https://www.youtube.com/watch?v=N7jV-jQ3QWc</a></li>
+        <li><a href="https://www.beningo.com/state-machines-with-c/" target="_blank">https://www.beningo.com/state-machines-with-c/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu Exkursion 1</h4>
+        <ul>
+          <li>Wie würdest du die Steuerung eines automatischen Türantriebs als Zustandsautomat modellieren?</li>
+          <li>Wie gehst du mit Zeitbedingungen wie „Tür muss nach X Sekunden automatisch schließen“ im Code um?</li>
+          <li>Wie würdest du Fehlerzustände (z.B. Hindernis erkannt, Motor blockiert) abbilden?</li>
+          <li>Wie stellst du sicher, dass sicherheitskritische Zustände (z.B. Not-Stopp) immer Vorrang haben?</li>
+          <li>Wie würdest du die Kommunikation zwischen Antrieb und Terminal strukturieren (Protokoll, Polling vs Events)?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="ex-2">
+        <h3>📌 Exkursion 2 – Bootloader &amp; Flash Memory</h3>
+      </div>
+      <ul>
+        <li>Flash vs RAM</li>
+        <li>Partition Tables</li>
+        <li>Firmware Write Process</li>
+        <li>Failsafe Rollback-Mechanismen</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Bootloader concepts explained</em> –
+          <a href="https://www.youtube.com/watch?v=OkUQ3iMMiYQ" target="_blank">https://www.youtube.com/watch?v=OkUQ3iMMiYQ</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://interrupt.memfault.com/blog/how-to-write-a-bootloader" target="_blank">https://interrupt.memfault.com/blog/how-to-write-a-bootloader</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu Exkursion 2</h4>
+        <ul>
+          <li>Wie funktioniert ein typischer Firmware-Update-Prozess in einem Embedded-System?</li>
+          <li>Wie stellst du sicher, dass ein Update bei Stromausfall nicht zu einem „gebrickten“ Gerät führt?</li>
+          <li>Was sind die Unterschiede zwischen verschiedenen Flash-Speichertypen (NOR, NAND etc.)?</li>
+          <li>Wie würdest du eine einfache A/B-Partitionstrategie für Firmware-Updates erklären?</li>
+          <li>Welche Sicherheitsaspekte sind bei Bootloadern wichtig (Signaturen, Secure Boot)?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="ex-3">
+        <h3>📌 Exkursion 3 – Oszilloskop Signal-Analyse</h3>
+      </div>
+      <ul>
+        <li>Triggering</li>
+        <li>ADC Noise verstehen</li>
+        <li>PWM messen</li>
+        <li>Glitches in Kommunikation erkennen</li>
+      </ul>
+      <p><strong>🎥 Tutorials:</strong></p>
+      <ul>
+        <li><em>Oscilloscope Hands-on</em> –
+          <a href="https://www.youtube.com/watch?v=u4zyptPLlJI" target="_blank">https://www.youtube.com/watch?v=u4zyptPLlJI</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://rp24.readthedocs.io/en/latest/learn/lesson1/oscilloscope.html" target="_blank">https://rp24.readthedocs.io/en/latest/learn/lesson1/oscilloscope.html</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu Exkursion 3</h4>
+        <ul>
+          <li>Wie stellst du Trigger-Einstellungen ein, um ein bestimmtes Ereignis zuverlässig zu sehen?</li>
+          <li>Wie erkennst du auf einem Oszilloskop Noise oder Übersprechen zwischen Leitungen?</li>
+          <li>Wie würdest du ein PWM-Signal auf seine Parameter (Frequenz, Duty Cycle) untersuchen?</li>
+          <li>Wie hilft dir ein Oszilloskop beim Debuggen von seriellen Protokollen?</li>
+          <li>Wie würdest du ein Problem eingrenzen, bei dem die Versorgungsspannung sporadisch einbricht?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="checkbox-title">
+        <input type="checkbox" data-id="ex-4">
+        <h3>📌 Exkursion 4 – Embedded Security Basics</h3>
+      </div>
+      <ul>
+        <li>Secure Boot</li>
+        <li>Flash Encryption</li>
+        <li>OTA-Update Security</li>
+        <li>Key Storage (NVS/Partition)</li>
+      </ul>
+      <p><strong>🎥 Tutorial:</strong></p>
+      <ul>
+        <li><em>Secure Boot in ESP32</em> –
+          <a href="https://www.youtube.com/watch?v=7gq8gGqfT1g" target="_blank">https://www.youtube.com/watch?v=7gq8gGqfT1g</a></li>
+      </ul>
+      <p><strong>🌐 Ressource:</strong></p>
+      <ul>
+        <li><a href="https://randomnerdtutorials.com/esp32-secure-boot-flash-encryption/" target="_blank">https://randomnerdtutorials.com/esp32-secure-boot-flash-encryption/</a></li>
+      </ul>
+
+      <div class="interview-block">
+        <h4>Potentielle Interviewfragen zu Exkursion 4</h4>
+        <ul>
+          <li>Was ist Secure Boot und warum ist es für vernetzte Embedded-Geräte wichtig?</li>
+          <li>Wie schützt Flash Encryption vor Reverse Engineering oder Manipulation?</li>
+          <li>Wie würdest du geheime Schlüssel sicher auf einem Gerät speichern?</li>
+          <li>Welche Gefahren bestehen bei ungesicherten OTA-Updates?</li>
+          <li>Wie würdest du einem Kunden erklären, dass Security auch bei kleinen Geräten wichtig ist?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lernroutine -->
+  <div class="card">
+    <div class="checkbox-title">
+      <input type="checkbox" data-id="routine">
+      <div>
+        <div class="section-id">Routine</div>
+        <h2>✅ Empfohlene Wochen-Routine</h2>
+      </div>
+    </div>
+    <p>Empfohlene Lernroutine pro Woche:</p>
+    <table>
+      <tr><th>Tag</th><th>Fokus</th></tr>
+      <tr><td>Mo</td><td>Hardware Basics + Schaltpläne</td></tr>
+      <tr><td>Di</td><td>C &amp; Register-Manipulation</td></tr>
+      <tr><td>Mi</td><td>FreeRTOS + IPC</td></tr>
+      <tr><td>Do</td><td>UART/RS-485/I²C/SPI</td></tr>
+      <tr><td>Fr</td><td>Networking &amp; Device-Discovery</td></tr>
+      <tr><td>Sa</td><td>Linux/Yocto</td></tr>
+      <tr><td>So</td><td>Portfolio-Projekte + Tests</td></tr>
+    </table>
+  </div>
+
+</body>
+</html>
